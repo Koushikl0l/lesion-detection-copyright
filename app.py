@@ -24,13 +24,11 @@ def predict_label(img_path):
 
 
 # routes
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/")
 def main():
 	return render_template("index.html")
 
-@app.route("/about")
-def about_page():
-	return "Please subscribe  Artificial Intelligence Hub..!!!"
+
 
 @app.route("/submit", methods = ['GET', 'POST'])
 def get_output():
