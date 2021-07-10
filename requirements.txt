@@ -1,5 +1,5 @@
 Flask==1.1.2
-Tensorflow==2.2.0
+Tensorflow==2.5.0
 keras==2.4.3
 gunicorn==20.0.4
 Werkzeug==0.16.0
