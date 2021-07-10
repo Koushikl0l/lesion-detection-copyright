@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Image Classification</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .wrap {
+    width: 100%;
+    height: 100%;
+    
+}
+
+.fleft {
+    float:left; 
+    width: 50%;
+background:rgb(255, 255, 255);
+    height: 100%;
+}
+
+
+
+.fright {
+float: right;
+    background:rgb(255, 255, 255);
+    height: 100%;
+    width: 50%;
+    
+}
+.p{
+  margin-top: 50px;
+}
+pop{
+  margin-left: 5px;
+  margin-top: 5px;
+}
+#vl {
+  border-left: .2px solid rgb(27, 29, 27);
+  height: 500px;
+  margin-left: 50%;
+  margin-top: 20%;
+
+}
+  </style>
+</head>
+<body>
+  <div class="wrap" ">
+  <div class="fleft" >
+        <div style="margin-left: 15px;" >
+        <h2 class="text-center">Skin Lesion Detection</h2>
+        </br>
+        <h3 >What should I expect the data format to be?</h3>
+        <p>
+The images are provided in DICOM format. This can be accessed using commonly-available libraries like pydicom, and contains both image and metadata. It is a commonly used medical imaging data format.
+Images are also provided in JPEG and TFRecord format (in the jpeg and tfrecords directories, respectively). Images in TFRecord format have been resized to a uniform 1024x1024.
+Metadata is also provided outside of the DICOM format, in CSV files. See the Columns section for a description.
+</p>
+<h3>What am I predicting?</h3>
+<p>You are predicting a binary target for each image. 
+  Your model should predict the probability (floating point) between 0.0 and 1.0
+   that the lesion in the image is malignant (the target).
+   In the training data, train.csv, the value 0 denotes benign,
+    and 1 indicates malignant.</p>
+
+    <h3>Dataset Attributes</h3>
+
+    <ul>
+      <li>image_name - unique identifier, points to filename </li>
+      <li>patient_id - unique patient identifier</li>
+      <li>sex - the sex of the patient (when unknown, will be blank)</li>
+      <li>age_approx - approximate patient age at time of imaging</li>
+      <li>anatom_site_general_challenge - location of imaged site</li>
+      <li>diagnosis - detailed diagnosis information (train only)</li>
+      <li>benign_malignant - indicator of malignancy of imaged lesion</li>
+      <li>target - binarized version of the target variable</li>
+    </ul> 
+
+    <h3>Classes</h3>
+
+    <ol>
+      <li>MEL</li>
+      <li>NV</li>
+      <li>BCC</li>
+      <li>AK</li>
+      <li>BKL</li>
+      <li>DF</li>
+      <li>VASC</li>
+    </ol>
+  </div>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+<center>
+<div  class="fright">
+ 
+  <h1 class="text-center">Image Classfication</h1>
+  <br><br>
+  <form " action="/submit" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"></label>
+      <div class="col-sm-10">          
+        <input type="file" class="form-control" placeholder="Hours Studied"  name="my_image" id="pwd">
+      </div>
+    </div>
+    <br><br>
+    <br><br>
+    <div class="form-group" >        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Predict Image</button >
+      </div>
+    </div>
+  </form>
+
+	{% if prediction %}
+  <img src="{{img_path}}" height="200px" width="200px" class="p">
+	<h2> Your Prediction   : <i> {{prediction}} </i></h2>
+
+	{% endif %}
+
+</div>
+</center>
+
+
+
+
+
+
+</div>
+</body>
+</html>
