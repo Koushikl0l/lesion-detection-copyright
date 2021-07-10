@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-from keras.models import load_model
 from keras.preprocessing import image
 from keras.preprocessing.image import load_img,img_to_array
 from keras.applications.resnet50 import ResNet50
