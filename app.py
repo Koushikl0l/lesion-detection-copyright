@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
-from keras.preprocessing import image
-from keras.preprocessing.image import load_img,img_to_array
-from keras.applications.resnet50 import ResNet50
-from keras.applications.resnet50 import decode_predictions,preprocess_input
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.preprocessing.image import load_img,img_to_array
+from tensorflow.keras.applications.resnet50 import ResNet50
+from tensorflow.keras.applications.resnet50 import decode_predictions,preprocess_input
+
+
 
 app = Flask(__name__)
 
