@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 model = ResNet50(include_top=True,weights='imagenet')
 
-model.make_predict_function()
+#model.make_predict_function()
 
 def predict_label(img_path):
 	img =image.load_img(img_path, target_size=(224,224))
@@ -25,13 +25,13 @@ def predict_label(img_path):
 
 
 # routes
-@app.route("/")
+@app.route("/",methods = ['GET','POST'])
 def main():
 	return render_template("index.html")
 
 
 
-@app.route("/submit", methods = ['POST'])
+@app.route("/submit",methods = ['GET','POST'])
 def get_output():
 	if request.method == 'POST':
 		img = request.files['my_image']
